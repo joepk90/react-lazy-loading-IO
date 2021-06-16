@@ -11,7 +11,10 @@ const LazyLoadObserver = ({children}) => {
   });
 
   return (
-    <div ref={ref} class="lazy-load-observer">
+    <React.Fragment>
+
+      {inView === false && (<div ref={ref} class="lazy-load-observer"></div>)}
+
       {inView && (
         <Suspense fallback={
           <div className="lazy-fallback">
@@ -21,8 +24,8 @@ const LazyLoadObserver = ({children}) => {
           {children}
         </Suspense>
       )}
-
-    </div>
+      
+    </React.Fragment>
   );
 };
 
